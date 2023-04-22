@@ -1,25 +1,27 @@
 package hellocucumber.stepdefinitions;
 
+import hellocucumber.utils.WebDriverUtil;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
-
 public class SearchForFood {
 
-    private WebDriver driver;
-    private WebDriverWait wait;
+    private final WebDriver driver;
+    private final WebDriverWait wait;
+
+    public SearchForFood() {
+        driver = WebDriverUtil.getWebDriver();
+        wait = WebDriverUtil.getWait();
+    }
 
     @Given("I am on the Google search page")
     public void I_visit_google() {
-        createWebDriver();
         driver.get("https://google.com");
     }
 
@@ -38,11 +40,6 @@ public class SearchForFood {
             }
         });
         driver.quit();
-    }
-
-    private void createWebDriver() {
-        driver = new ChromeDriver();
-        wait = new WebDriverWait(driver, Duration.ofSeconds(20));
     }
 
 }
