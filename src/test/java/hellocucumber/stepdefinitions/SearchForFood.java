@@ -1,5 +1,6 @@
 package hellocucumber.stepdefinitions;
 
+import hellocucumber.utils.EnvironmentUtil;
 import hellocucumber.utils.WebDriverUtil;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
@@ -14,15 +15,17 @@ public class SearchForFood {
 
     private final WebDriver driver;
     private final WebDriverWait wait;
+    private final EnvironmentUtil environmentUtil;
 
     public SearchForFood() {
         driver = WebDriverUtil.getWebDriver();
         wait = WebDriverUtil.getWait();
+        environmentUtil = EnvironmentUtil.getInstance();
     }
 
-    @Given("I am on the Google search page")
-    public void I_visit_google() {
-        driver.get("https://google.com");
+    @Given("I am on the search page")
+    public void I_visit_search_page() {
+        driver.get(environmentUtil.getSearchUrl());
     }
 
     @When("I search for {string}")

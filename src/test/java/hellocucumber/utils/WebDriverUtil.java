@@ -35,7 +35,7 @@ public class WebDriverUtil {
     private static ChromeOptions buildChromeOptions() {
         ChromeOptions options = new ChromeOptions();
 
-        options.addArguments("--headless");
+//        options.addArguments("--headless");
         return options;
     }
 
