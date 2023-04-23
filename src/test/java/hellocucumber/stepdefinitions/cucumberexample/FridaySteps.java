@@ -1,4 +1,4 @@
-package hellocucumber.stepdefinitions;
+package hellocucumber.stepdefinitions.cucumberexample;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;

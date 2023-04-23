@@ -1,11 +1,15 @@
-package hellocucumber.stepdefinitions;
+package hellocucumber.stepdefinitions.seleniumexample;
 
 import hellocucumber.utils.EnvironmentUtil;
 import hellocucumber.utils.WebDriverUtil;
+import io.cucumber.java.After;
+import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
 import org.openqa.selenium.By;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -42,7 +46,13 @@ public class SearchForFood {
                 return webDriver.getTitle().toLowerCase().startsWith(title);
             }
         });
-        driver.quit();
+    }
+
+    @After()
+    public void onAfter (Scenario scenario) {
+        final byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+        scenario.attach(screenshot, "image/png", scenario.getName());
+        driver.close();
     }
 
 }
