@@ -15,13 +15,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class SearchForFood {
+public class SeleniumSteps {
 
     private final WebDriver driver;
     private final WebDriverWait wait;
     private final EnvironmentUtil environmentUtil;
 
-    public SearchForFood() {
+    public SeleniumSteps() {
         driver = WebDriverUtil.getWebDriver();
         wait = WebDriverUtil.getWait();
         environmentUtil = EnvironmentUtil.getInstance();
