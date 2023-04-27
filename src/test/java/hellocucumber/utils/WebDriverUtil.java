@@ -16,7 +16,7 @@ public class WebDriverUtil {
     private static final Duration TIME_OUT_SEC = Duration.ofSeconds(20);
 
     public static WebDriver getWebDriver() {
-        if (driver == null) {
+        if (driver == null || driver.toString().contains("null")) {
             ChromeOptions options = buildChromeOptions();
             driver = new ChromeDriver(options);
         }
