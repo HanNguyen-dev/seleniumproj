@@ -16,3 +16,12 @@ Feature: How to use excel spreadsheet?
     Examples:
       | search_term_one | search_term_two  |
       | strawberry      | banana           |
+
+  Scenario Outline: Loading data from excel
+    Given I am on the search page
+    When I load the excel file from "<excel_file_path>"
+    When Search term from loaded excel file
+    Then succeed
+    Examples:
+      | excel_file_path                              |
+      | src/test/resources/excel_files/selenium.xlsx |
